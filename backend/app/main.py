@@ -8,7 +8,3 @@ app = FastAPI(title=settings.PROJECT_NAME)
 
 # Include the API router with a standard prefix
 app.include_router(api_router, prefix=settings.API_V1_STR)
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello World"}
