@@ -1,0 +1,10 @@
+<div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200 flex flex-col h-full min-h-[300px]">
+  @if (title()) {
+    <h3 class="font-medium text-gray-600 mb-4">{{ title() }}</h3>
+  }
+  
+  <div class="flex-grow w-full h-full">
+    <!-- ng-content es el equivalente a {children} en React -->
+    <ng-content></ng-content>
+  </div>
+</div>
