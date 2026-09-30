@@ -38,12 +38,23 @@ backend/
 ## 🚀 Requisitos Previos
 
 Asegúrate de tener instalado en tu sistema:
-- Python 3.11 o superior.
+- Python 3.11 o superior (si ejecutas localmente sin Docker).
 - Una instancia de MongoDB ejecutándose localmente o una URI de MongoDB Atlas.
+- **Docker** (opcional, pero recomendado).
 
-## ⚙️ Instalación y Configuración
+## 🐳 Ejecución con Docker
 
-Sigue estos pasos para configurar el entorno de desarrollo local:
+El proyecto cuenta con un `Dockerfile` para el entorno backend. Para levantarlo rápidamente y con *hot-reloading* habilitado, se recomienda usar **Docker Compose** desde la raíz del proyecto:
+
+```bash
+# Desde la raíz de coffee-bi/
+docker-compose up -d --build backend
+```
+Esto hará que el backend esté disponible en `http://localhost:8000`.
+
+## ⚙️ Instalación y Configuración (Local Manual)
+
+Si decides no usar Docker, sigue estos pasos para configurar el entorno de desarrollo local manualmente:
 
 1. **Navegar al directorio del backend:**
    ```bash

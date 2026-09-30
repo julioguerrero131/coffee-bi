@@ -40,13 +40,25 @@ frontend/
 ## 🚀 Requisitos Previos
 
 Asegúrate de tener instalados los siguientes componentes antes de comenzar:
-- **[Node.js](https://nodejs.org/):** Versión LTS (recomendado 18.x o superior).
-- **npm:** Gestor de paquetes de Node (viene por defecto con Node.js, aquí usamos v11+).
+- **[Node.js](https://nodejs.org/):** Versión LTS (recomendado 18.x o superior) si no usas Docker.
+- **npm:** Gestor de paquetes de Node (viene por defecto con Node.js).
 - *Opcional:* Angular CLI (`npm install -g @angular/cli`).
+- *Opcional:* **Docker** (recomendado para un despliegue unificado).
 
-## ⚙️ Instalación y Configuración
+## 🐳 Ejecución con Docker
 
-Sigue estos pasos para configurar tu entorno de desarrollo local:
+Este directorio contiene su propio `Dockerfile` diseñado para el entorno de desarrollo, habilitando el *hot-reloading* de Angular dentro del contenedor. La mejor forma de ejecutarlo es utilizando **Docker Compose** desde la raíz de todo el proyecto:
+
+```bash
+# Desde la raíz de coffee-bi/
+docker-compose up -d --build frontend
+```
+
+La aplicación quedará expuesta en `http://localhost:4200/`.
+
+## ⚙️ Instalación y Configuración (Local Manual)
+
+Si decides no usar Docker, sigue estos pasos para configurar tu entorno de desarrollo local manualmente:
 
 1. **Navegar al directorio del frontend:**
    ```bash

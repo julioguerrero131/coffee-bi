@@ -37,9 +37,23 @@ coffee-bi/
 
 ## 🚀 Cómo Empezar
 
-Para desplegar este proyecto en tu entorno local, deberás configurar y ejecutar tanto el backend como el frontend.
+La forma más rápida y recomendada de levantar todo el proyecto (Frontend y Backend) es utilizando **Docker** y **Docker Compose**. Esto configurará automáticamente los entornos e incluye *hot-reloading* para desarrollo.
 
-Por favor, consulta las instrucciones detalladas en cada uno de los directorios:
+### 🐳 Usando Docker (Recomendado)
+
+1. Asegúrate de tener **Docker** (y Docker Desktop si aplicas) instalado y en ejecución.
+2. En la raíz del proyecto, ejecuta el siguiente comando:
+   ```bash
+   docker-compose up -d --build
+   ```
+3. Una vez que los contenedores estén listos, los servicios estarán disponibles en:
+   - **Frontend (Angular):** `http://localhost:4200`
+   - **Backend (FastAPI):** `http://localhost:8000`
+   - **Documentación de la API:** `http://localhost:8000/docs`
+
+### 💻 Ejecución Manual Local
+
+Si prefieres no usar Docker o necesitas instalar las dependencias localmente, puedes configurar y ejecutar cada entorno de forma manual. Por favor, consulta las instrucciones detalladas en cada uno de los directorios:
 
 - 👉 **[Guía de Configuración del Backend](./backend/README.md)**
 - 👉 **[Guía de Configuración del Frontend](./frontend/README.md)**
