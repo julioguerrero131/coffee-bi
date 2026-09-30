@@ -1,59 +1,93 @@
-# Frontend
+<div align="center">
+  <h1>🎨 Coffee BI - Interfaz de Usuario (Frontend)</h1>
+  <p><strong>El Dashboard Analítico para Coffee BI</strong></p>
+  
+  [![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=for-the-badge&logo=angular&logoColor=white)]()
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)]()
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)]()
+</div>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+<br />
 
-## Development server
+## 📖 Descripción General
 
-To start a local development server, run:
+Este directorio contiene el frontend del proyecto **Coffee BI**, una aplicación de página única (SPA) desarrollada con **Angular 21**. Proporciona una experiencia de usuario rica, reactiva y moderna para visualizar los datos del negocio, revisar las transacciones recientes y analizar gráficos detallados que ayudan a los dueños de la cafetería a tomar decisiones informadas.
 
-```bash
-ng serve
+## 🛠️ Tecnologías Utilizadas
+
+- **[Angular 21](https://angular.dev/):** El framework principal utilizado para construir la estructura de la aplicación y la reactividad.
+- **[Tailwind CSS (v4)](https://tailwindcss.com/):** Framework de CSS utilitario utilizado para estilizar y dar un diseño moderno y responsivo al dashboard rápidamente.
+- **[TypeScript](https://www.typescriptlang.org/):** Tipado estricto para un desarrollo más seguro, mantenible y escalable.
+- **[RxJS](https://rxjs.dev/):** Para programación reactiva y manejo del flujo de datos asincrónico (ej. peticiones a la API).
+
+## 📂 Estructura del Proyecto
+
+```text
+frontend/
+├── src/
+│   ├── app/
+│   │   ├── components/  # Componentes reutilizables (tarjetas, gráficos, tablas)
+│   │   ├── pages/       # Vistas completas de la aplicación (ej. home dashboard)
+│   │   ├── app.routes.ts # Configuración del enrutamiento de la aplicación
+│   │   └── app.ts       # Componente raíz
+│   ├── public/          # Archivos estáticos como imágenes y fuentes
+│   └── index.html       # Archivo HTML principal
+├── angular.json         # Configuración del workspace de Angular
+├── package.json         # Dependencias y scripts de NPM
+└── tailwind.config.js   # Configuración de los estilos y diseño de Tailwind (si aplica)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Requisitos Previos
 
-## Code scaffolding
+Asegúrate de tener instalados los siguientes componentes antes de comenzar:
+- **[Node.js](https://nodejs.org/):** Versión LTS (recomendado 18.x o superior).
+- **npm:** Gestor de paquetes de Node (viene por defecto con Node.js, aquí usamos v11+).
+- *Opcional:* Angular CLI (`npm install -g @angular/cli`).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ⚙️ Instalación y Configuración
 
-```bash
-ng generate component component-name
-```
+Sigue estos pasos para configurar tu entorno de desarrollo local:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. **Navegar al directorio del frontend:**
+   ```bash
+   cd frontend
+   ```
 
-```bash
-ng generate --help
-```
+2. **Instalar las dependencias de NPM:**
+   ```bash
+   npm install
+   ```
 
-## Building
+## 🏃‍♂️ Ejecución del Servidor de Desarrollo
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Para correr la aplicación en un servidor de desarrollo local, ejecuta:
 
 ```bash
-ng test
+npm start
+# O alternativamente, si tienes instalado el CLI globalmente:
+# ng serve
 ```
 
-## Running end-to-end tests
+La aplicación estará disponible automáticamente en: `http://localhost:4200/`. El navegador recargará la página por sí solo cada vez que modifiques o guardes un archivo del código fuente.
 
-For end-to-end (e2e) testing, run:
+## 📦 Construcción para Producción
+
+Para compilar el proyecto en una versión lista y optimizada para la producción, utiliza:
 
 ```bash
-ng e2e
+npm run build
+# o 'ng build'
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Los artefactos de compilación se almacenarán en el directorio `dist/`. Estos archivos están minimizados, optimizados para un rendimiento rápido y listos para ser desplegados en plataformas como Vercel, Netlify o cualquier servidor web.
 
-## Additional Resources
+## 🧪 Pruebas (Testing)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para ejecutar la batería de pruebas unitarias usando el motor de Vitest (o Karma/Jasmine por defecto de Angular), corre:
+
+```bash
+npm run test
+```
+
+---
+*Para volver a la raíz del proyecto, haz clic [aquí](../README.md).*
