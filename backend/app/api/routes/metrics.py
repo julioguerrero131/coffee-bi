@@ -36,3 +36,55 @@ def get_sales(
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/sales-by-month")
+def get_sales_by_month(
+    year: int = Query(..., description="Filtrar ventas por un año específico (ej. 2024)")
+):
+    """
+    Obtiene el total de ventas y la cantidad de tickets agrupados por mes para un año específico.
+    """
+    try:
+        pipeline = [
+            {
+                "$addFields": {
+                    "fecha_hora_date": { "$toDate": "$fecha_hora" }
+                }
+            },
+            {
+                "$match": {
+                    "$expr": {"$eq": [{"$year": "$fecha_hora_date"}, year]}
+                }
+            },
+            {
+                "$group": {
+                    "_id": {
+                        "year": {"$year": "$fecha_hora_date"},
+                        "month": {"$month": "$fecha_hora_date"}
+                    },
+                    "total_sales": {"$sum": "$monto"},
+                    "ticket_count": {"$sum": 1}
+                }
+            },
+            {
+                "$sort": {"_id.year": 1, "_id.month": 1}
+            }
+        ]
+        
+        cursor = db[settings.MONGO_COLLECTION_SALES].aggregate(pipeline)
+        
+        data = []
+        for result in cursor:
+            data.append({
+                "year": result["_id"]["year"],
+                "month": result["_id"]["month"],
+                "total_sales": result["total_sales"],
+                "ticket_count": result["ticket_count"]
+            })
+            
+        return {
+            "status": "success",
+            "data": data
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
