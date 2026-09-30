@@ -22,7 +22,7 @@ def seed_data():
         {"nombre": "Cappuccino Grande", "categoria": "Bebidas Calientes", "precio": 4.5},
         {"nombre": "Latte Vainilla", "categoria": "Bebidas Calientes", "precio": 4.0},
         {"nombre": "Espresso Doble", "categoria": "Bebidas Calientes", "precio": 3.0},
-        {"nombre": "Frappé Moka", "categoria": "Bebidas Frías", "precio": 5.5},
+        {"nombre": "Frappé Mocca", "categoria": "Bebidas Frías", "precio": 5.5},
         {"nombre": "Té Helado", "categoria": "Bebidas Frías", "precio": 3.5},
         {"nombre": "Muffin de Arándanos", "categoria": "Alimentos", "precio": 3.0},
         {"nombre": "Croissant", "categoria": "Alimentos", "precio": 2.5},
@@ -30,20 +30,21 @@ def seed_data():
     ]
     
     sales = []
-    # Comenzar desde hace 5 días
-    current_date = datetime.now() - timedelta(days=5)
+    # Comenzar desde el inicio del 2024
+    current_date = datetime(2024, 1, 1, 8, 0, 0)
     
-    print("Generando 20 ventas de prueba secuenciales...")
+    print("Generando 50 ventas de prueba secuenciales desde 2024 a 2026...")
     
-    for i in range(1, 21):
+    for i in range(1, 51):
         producto = random.choice(productos)
         
         # TK-1001, TK-1002...
         ticket_id = f"TK-{1000 + i}"
         
-        # Incrementar la fecha actual sumándole entre 1 y 6 horas de forma aleatoria
-        # para asegurar que TK-1002 siempre ocurra DESPUÉS de TK-1001
-        current_date += timedelta(hours=random.randint(1, 6), minutes=random.randint(0, 59))
+        # Incrementar la fecha actual sumándole días y horas de forma aleatoria
+        # para esparcir 50 registros a lo largo de 3 años (2024-2026)
+        # 3 años = ~1095 días, 1095 / 50 = ~22 días de diferencia entre cada ticket
+        current_date += timedelta(days=random.randint(15, 28), hours=random.randint(0, 23), minutes=random.randint(0, 59))
         
         sale = {
             "id_ticket": ticket_id,
