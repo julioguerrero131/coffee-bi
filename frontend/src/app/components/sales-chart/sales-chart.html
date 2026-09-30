@@ -1,0 +1,31 @@
+<div class="h-full flex flex-col justify-start">
+  @if (isLoading()) {
+    <div class="h-full flex items-center justify-center min-h-50">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[#165034]"></div>
+    </div>
+  } @else if (error()) {
+    <div class="h-full flex items-center justify-center text-red-500 text-center text-sm min-h-50">
+      {{ error() }}
+    </div>
+  } @else if (salesData().length === 0) {
+    <div class="h-full flex items-center justify-center text-gray-500 text-sm min-h-50">
+      No hay datos de ventas registrados para este año.
+    </div>
+  } @else {
+    <div class="space-y-4 w-full py-2 overflow-y-auto max-h-96 pr-2">
+      @for (item of salesData(); track item.month) {
+        <div class="w-full">
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 w-16">{{ getMonthName(item.month) }}</span>
+            <span class="text-gray-800 font-semibold">${{ item.total_sales | number:'1.2-2' }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded h-4">
+            <div class="bg-[#165034] h-4 rounded transition-all duration-1000 ease-out" 
+                 [style.width.%]="(item.total_sales / maxSales()) * 100"></div>
+          </div>
+          <div class="text-xs text-gray-400 mt-1 text-right">{{ item.ticket_count }} tickets</div>
+        </div>
+      }
+    </div>
+  }
+</div>
